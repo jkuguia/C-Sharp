@@ -1,0 +1,58 @@
+using System;
+
+namespace CalculatorApplication
+{
+    class Calculator
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("-----------------------");
+            Console.Read();
+            Console.Write("* Simple Calculator *");
+            Console.Read();
+            Console.Write("-----------------------");
+            Console.Read();
+
+            // Input First Number
+            Console.Write("Enter the first number: ");
+            int fn = Convert.ToInt32(Console.ReadLine());
+
+            // Input Second Number
+            Console.Write("Enter the second number: ");
+            int sn = Convert.ToInt32(Console.ReadLine());
+
+            // Select operation
+            Console.Write("Choose an operation: ");
+            Console.Read();
+            Console.WriteLine("1. Addition");
+            Console.WriteLine("2. Subtraction");
+            Console.WriteLine("3. Multiplication");
+            Console.WriteLine("4. Division");
+            Console.Read();
+            Console.Write("Enter the operation number (1-4): ");
+            int operation = Console.Read();
+            Console.WriteLine();
+
+            // Operation Execution with Switch Loop
+            switch (operation)
+            {
+                case '1':
+                    Console.WriteLine("Result of Addition: {0}", fn + sn);
+                    break;
+
+                case '2':
+                    Console.WriteLine("Result of Subtraction: {0}", fn - sn);
+                    break;
+
+                case '3':
+                    Console.WriteLine("Result of Multiplication: {0}", fn * sn);
+                    break;
+
+                case '4':
+                    Console.WriteLine("Result of Division: {0}", fn / sn);
+                    break;
+            }
+            Console.ReadLine();
+        }
+    }
+}
