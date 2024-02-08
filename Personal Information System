@@ -1,0 +1,83 @@
+using System;
+
+namespace TypeConversionApplication
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Console.WriteLine("Welcome to Your Personal Information System!");
+
+            string name = "";
+            int age = 0;
+            double height = 0;
+
+            Console.Write("Please enter your name: ");
+            while (true)
+            {
+                var readLine = Console.ReadLine();
+                if (!String.IsNullOrEmpty(readLine))
+                {
+                    name = readLine;
+                    break;
+                }
+                Console.Write("Name is empty, try again: ");
+            }
+
+            Console.Write("Please enter your age: ");
+            while (!int.TryParse(Console.ReadLine(), out age))
+                Console.Write("Invalid age, try again: ");
+
+            if (age < 0)
+            {
+                Console.WriteLine($"Invalid age input, no such age: {age} exist.");
+                return;
+            }
+
+            Console.Write("Please enter your height: ");
+            while (!double.TryParse(Console.ReadLine(), out height))
+                Console.Write("Invalid height, try again: ");
+            if (height < 0)
+            {
+                Console.WriteLine($"Invalid height input, no such height: {height} exist.");
+                return;
+            }
+
+            Console.WriteLine("-----------------------");
+            Console.WriteLine("Your Personal Details:");
+            Console.WriteLine("Name: {0}", name);
+            Console.WriteLine("Age: {0}", age);
+            Console.WriteLine("Height: {0}", height);
+
+            Console.WriteLine("-----------------------");
+            Console.Write("Age Check: ");
+            if (age < 18)
+            {
+                Console.WriteLine("You're still a minor.");
+            }
+            else
+            {
+                Console.WriteLine("You're legally allowed to drink.");
+            }
+
+            const int legal_drinking_age = 21;
+            Console.WriteLine("-----------------------");
+            Console.Write("Legal Drinking Age Verification: ");
+            if (age < legal_drinking_age)
+            {
+                Console.WriteLine("Sorry, you are underage for drinking.");
+            }
+            else
+            {
+                Console.WriteLine("You are legally allowed to drink.");
+            }
+
+            string personalInfo = $"{name}, {age} years old, {height} meters tall";
+            Console.WriteLine($"Personal Details Presentation: {personalInfo}");
+            Console.WriteLine();
+            Console.WriteLine("-----------------------");
+            Console.WriteLine("Thank you for using Your Personal Information System!");
+        }
+    }
+}
