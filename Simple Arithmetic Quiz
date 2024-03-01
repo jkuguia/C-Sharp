@@ -1,0 +1,82 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Random rnd = new Random();
+
+        // max number is excluded, so use 16
+        int maxNumber = 16;
+        int minNumber = 5;
+
+        // list of possible operations
+        string[] operations = ["+", "-", "*", "/"];
+        int numberOfQuestions = rnd.Next(minNumber, maxNumber); // max number of questions
+        int correctAnswer = 0; // hold correct answers
+
+        // loop until reach number of desired questions
+        for (int i = 0; i < numberOfQuestions; i++)
+        {
+            // generate random numbers
+            int firstNumber = rnd.Next(minNumber, maxNumber);
+            int secondNumber = rnd.Next(minNumber, maxNumber);
+
+            // generate random operation
+            int index = rnd.Next(0, operations.Length);
+            string operation = operations[index];
+
+            double result = 0; // hold result of the operations
+
+            // do operation
+            if (operation == "+")
+            {
+                result = firstNumber + secondNumber;
+            }
+            if (operation == "-")
+            {
+                result = firstNumber - secondNumber;
+
+            }
+            if (operation == "*")
+            {
+                result = firstNumber * secondNumber;
+
+            }
+            if (operation == "/")
+            {
+                double initialResult = (double)firstNumber / (double)secondNumber;
+                result = Math.Round(initialResult, 2); // round off two decimal places
+            }
+
+            // read answer from console
+            // checking til valid input
+            double answer = 0;
+            Console.WriteLine($"What is {firstNumber} {operation} {secondNumber}?");
+            Console.Write("Your Answer: ");
+            while (!double.TryParse(Console.ReadLine(), out answer))
+                Console.Write("Invalid answer, try again: ");
+
+            // if correct increment correctAnswer variable
+            if (answer == result)
+            {
+                Console.WriteLine("Correct!");
+                correctAnswer++;
+            }
+            else
+            {
+                Console.WriteLine($"Incorrect! The correct answer is {result}.");
+            }
+        }
+        // end of loop
+
+        double finalResult = Math.Round((double)correctAnswer / (double)numberOfQuestions, 2) * 100;
+        // display result
+        Console.Write($@"
+        
+Results:
+Total Correct Answers: {correctAnswer}
+Percentage of Correct Answers: {finalResult}%
+");
+    }
+}
