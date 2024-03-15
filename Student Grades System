@@ -1,1 +1,74 @@
+using System;
 
+namespace StudentGradesSystem
+{
+    class Program
+
+    {
+        static void Main(string[] args)
+        {
+            
+            double sci, mth, eng, total, per;
+            string nm;
+            int ns, choice;
+
+            Console.WriteLine("Enter total students: ");
+            ns = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Welcome to the Student Grades System!");
+            Console.WriteLine("[1] Enroll Students");
+            Console.WriteLine("[2] Enter Student Grades");
+            Console.WriteLine("[3] Show Student Grades");
+            Console.WriteLine("[4] Show Top Student");
+            Console.WriteLine("[5] Exit");
+            Console.WriteLine();
+
+            Console.Write("Enter choice (1-5): ");
+            choice = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+
+            if (choice == 1)
+            {
+                Console.Write("Enroll Students");
+                Console.WriteLine();
+                Console.Write("Please enter your name: ");
+                while (true)
+                {
+                    var readLine = Console.ReadLine();
+                    if (!String.IsNullOrEmpty(readLine))
+                    {
+                        nm = readLine;
+                        continue;
+                    }
+                    if (choice == 2)
+                    {
+                        Console.Write("Enter Student Grades");
+
+                        Console.Write("Input  the marks of Science : ");
+                        sci = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Input  the marks of Math : ");
+                        mth = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Input  the marks of English: ");
+                        eng = Convert.ToInt32(Console.ReadLine());
+
+                        total = sci + mth + eng;
+                        per = total / 3.0;
+                    }
+                   /* else if (choice == 3)
+                    {
+                        Console.Write("Show Student Grades");
+                    }
+                    else if (choice == 4)
+                    {
+                        Console.Write("Show Top Student");
+                    }
+                    else if (choice == 5)
+                    {
+                        Console.Write("Exit");
+                    }
+                    Console.ReadLine();*/
+
+                }
+            }
+        }
+    }
+}
